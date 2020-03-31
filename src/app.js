@@ -57,7 +57,9 @@ app.get("/weather", (req, res) => {
             }
             console.log(forecastData)
             res.send({
-                forecast: forecastData.summary + " it's currently " + forecastData.currently + ", There is " + forecastData.percent + "% of raining.",
+                forecast: forecastData.summary + " it's currently " + forecastData.currently +
+                    " degree Celsius, There is " + forecastData.percent + "% of raining. The pressure is " +
+                    forecastData.pressure + " hPa and the wind speed is " + forecastData.windSpeed + " Kph",
                 location,
                 address: req.query.address
             })

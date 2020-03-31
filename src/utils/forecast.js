@@ -1,7 +1,7 @@
 const request = require("request");
 
 const forecast = (long, lat, callback) => {
-    const url = "https://api.darksky.net/forecast/87b6dcab224b1419369560c2b522d143/" + long + "," + lat + "?units=si&lang=en"
+    const url = "https://api.darksky.net/forecast/87b6dcab224b1419369560c2b522d143/" + long + "," + lat + "?units=ca&lang=en"
     request({ url, json: true }, (error, { body }) => {
         if (error) {
             callback("unable to connect to weather service", undefined)
@@ -13,6 +13,8 @@ const forecast = (long, lat, callback) => {
                 currently: body.currently.temperature,
                 percent: body.currently.precipProbability,
                 timeZone: body.timezone,
+                pressure: body.currently.pressure,
+                windSpeed: body.currently.windSpeed,
             })
         }
     })
